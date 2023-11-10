@@ -30,7 +30,7 @@ Feature: Options
       | password | secret_sauce  |
 
 #  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+  @login5
   Scenario: Login With Valid Credentials
     Given user is on landing page
     When user login as "standard_user"
