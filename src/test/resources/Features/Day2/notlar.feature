@@ -9,7 +9,7 @@ Feature: Options
 
 #  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  @login1
+  @login1 @web @ios
   Scenario: Login With Valid Credentials
     Given user is on landing page
     When user login as "standard_user"
