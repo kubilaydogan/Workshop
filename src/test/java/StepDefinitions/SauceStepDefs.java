@@ -120,4 +120,13 @@ public class SauceStepDefs extends CoreObjects {
     }
 
 
+    @Then("verify {int} product are listed on Products Page")
+    public void verifyProductAreListedOnProductsPage(int count) {
+        assertEquals(count,pages.productsPage().getCountOfProducts());
+    }
+
+    @And("verify that sort dropdown has this options")
+    public void verifyThatSortDropdownHasThisOptions(List<String>options) {
+        pages.productsPage().verifySortDropDownOptions(options);
+    }
 }

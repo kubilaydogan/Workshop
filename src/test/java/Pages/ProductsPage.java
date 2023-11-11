@@ -1,9 +1,13 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -62,6 +66,32 @@ public class ProductsPage extends BasePage {
     public int getShoppingCartItemCount() {
         String count = driver.findElement(shoppincCardCount).getText();
         return Integer.parseInt(count);
+    }
+
+    public int getCountOfProducts() {
+//       List<WebElement> product = driver.findElements(By.cssSelector(".inventory_item"));
+//        return product.size();
+        return driver.findElements(By.cssSelector(".inventory_item")).size();
+    }
+
+    public void verifySortDropDownOptions(List<String> options) {
+        WebElement dropdown = driver.findElement(By.xpath("//select[@class='product_sort_container']"));
+        Select select = new Select(dropdown);
+        List<WebElement> content = select.getOptions();
+        List<String> text = new ArrayList<>();
+        for(WebElement each: content){
+            text.add(each.getText());
+        }
+        assertEquals(options,text );
+    }
+
+    //2.yol
+    public void verifySortDropDownOptions2(List<String> options) {
+        WebElement dropdown = driver.findElement(By.xpath("//select[@class='product_sort_container']"));
+        Select select = new Select(dropdown);
+        List<WebElement> content = select.getOptions();
+        List<String> texts = content.stream().map(WebElement::getText).collect(Collectors.toList());
+        assertEquals(options, texts);
     }
 }
 

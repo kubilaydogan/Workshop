@@ -6,11 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-<<<<<<< HEAD
+
         tags = "@cucumber and not @ignore",
-=======
-        tags = "@regression and not @ignore",
->>>>>>> 5333408868c4908aeb5a86b51bb9c0e79c602bfa
         features = {"src/test/resources/Features"},
         glue = {"StepDefinitions"},
         plugin = {
